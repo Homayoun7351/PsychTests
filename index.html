@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="آزمون‌های روان‌شناختی استاندارد و علمی">
 <title>آزمون‌های روان‌شناختی</title>
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 <header class="topbar">
@@ -40,35 +40,35 @@
       <h3>غربالگری اضطراب</h3>
       <p>ارزیابی نشانه‌های اضطراب در دو هفته اخیر با یک ابزار کوتاه و ساختاریافته.</p>
       <div class="tags"><span>۷ سؤال</span><span>گزارش فوری</span></div>
-      <button class="start-btn" onclick="startTest('gad7')">شروع آزمون <span>←</span></button>
+      <button class="start-btn" type="button" data-test-id="gad7">شروع آزمون <span>←</span></button>
     </article>
     <article class="test-card">
       <div class="card-top"><span class="icon">✦</span><span class="duration">حدود ۲ دقیقه</span></div>
       <h3>بهزیستی روانی</h3>
       <p>ارزیابی کوتاه وضعیت بهزیستی و حال عمومی شما در دو هفته گذشته.</p>
       <div class="tags"><span>۵ سؤال</span><span>گزارش فوری</span></div>
-      <button class="start-btn" onclick="startTest('who5')">شروع آزمون <span>←</span></button>
+      <button class="start-btn" type="button" data-test-id="who5">شروع آزمون <span>←</span></button>
     </article>
     <article class="test-card">
       <div class="card-top"><span class="icon">△</span><span class="duration">حدود ۳ دقیقه</span></div>
       <h3>غربالگری افسردگی</h3>
       <p>ارزیابی کوتاه علائم افسردگی در دو هفته گذشته با PHQ-9.</p>
       <div class="tags"><span>۹ سؤال</span><span>گزارش فوری</span></div>
-      <button class="start-btn" onclick="startTest('phq9')">شروع آزمون <span>←</span></button>
+      <button class="start-btn" type="button" data-test-id="phq9">شروع آزمون <span>←</span></button>
     </article>
     <article class="test-card">
       <div class="card-top"><span class="icon">◇</span><span class="duration">حدود ۳ دقیقه</span></div>
       <h3>فشار روانی ادراک‌شده</h3>
       <p>سنجش میزان فشاری که در یک ماه گذشته در زندگی خود ادراک کرده‌اید.</p>
       <div class="tags"><span>۱۰ سؤال</span><span>گزارش فوری</span></div>
-      <button class="start-btn" onclick="startTest('pss10')">شروع آزمون <span>←</span></button>
+      <button class="start-btn" type="button" data-test-id="pss10">شروع آزمون <span>←</span></button>
     </article>
     <article class="test-card">
       <div class="card-top"><span class="icon">□</span><span class="duration">حدود ۵ دقیقه</span></div>
       <h3>کیفیت زندگی</h3>
       <p>ارزیابی چهار حوزه اصلی کیفیت زندگی با WHOQOL-BREF.</p>
       <div class="tags"><span>۲۶ سؤال</span><span>گزارش حوزه‌ای</span></div>
-      <button class="start-btn" onclick="startTest('whoqol')">شروع آزمون <span>←</span></button>
+      <button class="start-btn" type="button" data-test-id="whoqol">شروع آزمون <span>←</span></button>
     </article>
   </div>
 </section>
@@ -84,14 +84,6 @@
 </section>
 </main>
 <footer>روان‌سنج · اطلاعات این سایت جایگزین تشخیص یا مشاوره تخصصی نیست.</footer>
-<script src="app.js?v=8"></script>
-<script>
-document.addEventListener("DOMContentLoaded",function(){
-  document.querySelectorAll(".start-btn").forEach(function(button){
-    var m=button.getAttribute("onclick");
-    if(m){ button.onclick=function(e){ e.preventDefault(); try{ window.startTest((m.match(/startTest\('([^']+)'\)/)||[])[1]); }catch(err){ console.error(err); alert("خطا در اجرای آزمون: "+err.message); } }; }
-  });
-});
-</script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
