@@ -69,7 +69,7 @@ function showResult(){
 }
 function showWhoqolResult(){
   const vals=answers.map((v,i)=>[2,3,25].includes(i)?6-v:v);
-  const domains={جسمانی:[2,3,9,10,15,16,17,18],روان‌شناختی:[4,5,6,7,10,18],"روابط اجتماعی":[19,20,21],"محیطی":[8,11,12,13,14,22,23,24]};
+  const domains={جسمانی:[2,3,9,14,15,16,17],روان‌شناختی:[4,5,6,10,18,25],"روابط اجتماعی":[19,20,21],"محیطی":[7,8,11,12,13,22,23,24]};
   const scores=Object.entries(domains).map(([name,idx])=>{const avg=idx.reduce((s,i)=>s+vals[i],0)/idx.length;return {name,score:(avg*4).toFixed(1)}}); 
   const report=`گزارش ${currentTest.title}\n${scores.map(x=>x.name+": "+x.score+" از ۲۰").join("\n")}\n\nاین نتیجه برای توصیف حوزه‌های کیفیت زندگی است و تشخیص پزشکی نیست.`;
   document.querySelector(".runner-card").innerHTML=`<span class="eyebrow">نتیجه ارزیابی</span><h1>گزارش کیفیت زندگی</h1><div class="domain-grid">${scores.map(x=>`<div class="domain-card"><strong>${x.name}</strong><span>${x.score} از ۲۰</span></div>`).join("")}</div><div class="result-note">${currentTest.resultText()}</div><div class="result-actions"><button class="primary-btn" onclick="copyReport(${JSON.stringify(report)})">کپی گزارش</button><button class="start-btn" onclick="location.reload()">بازگشت به آزمون‌ها</button></div>`;
