@@ -75,3 +75,20 @@ function showWhoqolResult(){
   document.querySelector(".runner-card").innerHTML=`<span class="eyebrow">نتیجه ارزیابی</span><h1>گزارش کیفیت زندگی</h1><div class="domain-grid">${scores.map(x=>`<div class="domain-card"><strong>${x.name}</strong><span>${x.score} از ۲۰</span></div>`).join("")}</div><div class="result-note">${currentTest.resultText()}</div><div class="result-actions"><button class="primary-btn" onclick="copyReport(${JSON.stringify(report)})">کپی گزارش</button><button class="start-btn" onclick="location.reload()">بازگشت به آزمون‌ها</button></div>`;
 }
 async function copyReport(report){try{await navigator.clipboard.writeText(report);alert("گزارش با موفقیت کپی شد.")}catch{alert("کپی خودکار در این مرورگر در دسترس نیست.")}}
+
+
+// Robust public-page button binding
+window.startTest = startTest;
+window.answerQuestion = answerQuestion;
+window.previousQuestion = previousQuestion;
+window.copyReport = copyReport;
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.addEventListener("click", function(event){
+    const button = event.target.closest("[data-test-id]");
+    if (!button) return;
+    event.preventDefault();
+    const id = button.getAttribute("data-test-id");
+    if (tests[id]) startTest(id);
+  });
+});
