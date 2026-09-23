@@ -78,7 +78,16 @@ function showWhoqolResult(){
 async function copyReport(report){try{await navigator.clipboard.writeText(report);alert("گزارش با موفقیت کپی شد.")}catch{alert("کپی خودکار در این مرورگر در دسترس نیست.")}}
 
 
-document.addEventListener("DOMContentLoaded", function(){\n  document.querySelectorAll("[data-test-id]").forEach(function(button){\n    button.addEventListener("click", function(){\n      const id = button.getAttribute("data-test-id");\n      if (tests[id]) startTest(id);\n    });\n  });\n});\n\nwindow.startTest = startTest;
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll("[data-test-id]").forEach(function(button){
+    button.addEventListener("click", function(){
+      const id = button.getAttribute("data-test-id");
+      if (tests[id]) startTest(id);
+    });
+  });
+});
+
+window.startTest = startTest;
 window.answerQuestion = answerQuestion;
 window.previousQuestion = previousQuestion;
 window.copyReport = copyReport;
