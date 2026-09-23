@@ -1,4 +1,4 @@
-const tests = {
+window.PsychTests = {
   gad7: {
     title: "غربالگری اضطراب", period: "در دو هفته گذشته",
     items: ["احساس عصبی بودن، اضطراب یا بی‌قراری داشته‌اید؟","نتوانسته‌اید جلوی نگرانی یا اضطراب خود را بگیرید؟","درباره موضوعات مختلف بیش از حد نگران بوده‌اید؟","در آرام کردن خود یا کنار آمدن با نگرانی مشکل داشته‌اید؟","آن‌قدر بی‌قرار بوده‌اید که نشستن در یک جا برایتان سخت بوده باشد؟","به‌راحتی ناراحت یا تحریک‌پذیر شده‌اید؟","احساس کرده‌اید اتفاق بدی ممکن است بیفتد؟"],
@@ -40,6 +40,7 @@ const tests = {
   }
 };
 
+const tests = window.PsychTests;
 let currentTest=null,currentIndex=0,answers=[];
 
 function startTest(id){
@@ -77,18 +78,7 @@ function showWhoqolResult(){
 async function copyReport(report){try{await navigator.clipboard.writeText(report);alert("گزارش با موفقیت کپی شد.")}catch{alert("کپی خودکار در این مرورگر در دسترس نیست.")}}
 
 
-// Robust public-page button binding
 window.startTest = startTest;
 window.answerQuestion = answerQuestion;
 window.previousQuestion = previousQuestion;
 window.copyReport = copyReport;
-
-document.addEventListener("DOMContentLoaded", function(){
-  document.addEventListener("click", function(event){
-    const button = event.target.closest("[data-test-id]");
-    if (!button) return;
-    event.preventDefault();
-    const id = button.getAttribute("data-test-id");
-    if (tests[id]) startTest(id);
-  });
-});
