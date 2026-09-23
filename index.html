@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="آزمون‌های روان‌شناختی استاندارد و علمی">
 <title>آزمون‌های روان‌شناختی</title>
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 <header class="topbar">
@@ -84,6 +84,14 @@
 </section>
 </main>
 <footer>روان‌سنج · اطلاعات این سایت جایگزین تشخیص یا مشاوره تخصصی نیست.</footer>
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll(".start-btn").forEach(function(button){
+    var m=button.getAttribute("onclick");
+    if(m){ button.onclick=function(e){ e.preventDefault(); try{ window.startTest((m.match(/startTest\('([^']+)'\)/)||[])[1]); }catch(err){ console.error(err); alert("خطا در اجرای آزمون: "+err.message); } }; }
+  });
+});
+</script>
 </body>
 </html>
