@@ -78,16 +78,17 @@ function showWhoqolResult(){
 async function copyReport(report){try{await navigator.clipboard.writeText(report);alert("گزارش با موفقیت کپی شد.")}catch{alert("کپی خودکار در این مرورگر در دسترس نیست.")}}
 
 
-document.addEventListener("DOMContentLoaded", function(){
-  document.querySelectorAll("[data-test-id]").forEach(function(button){
-    button.addEventListener("click", function(){
-      const id = button.getAttribute("data-test-id");
-      if (tests[id]) startTest(id);
-    });
-  });
-});
-
 window.startTest = startTest;
 window.answerQuestion = answerQuestion;
 window.previousQuestion = previousQuestion;
 window.copyReport = copyReport;
+
+document.addEventListener("click", function(event){
+  const button = event.target.closest("[data-test-id]");
+  if (!button) return;
+  const id = button.getAttribute("data-test-id");
+  if (tests[id]) {
+    event.preventDefault();
+    startTest(id);
+  }
+});
